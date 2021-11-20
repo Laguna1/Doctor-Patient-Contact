@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fullname:</strong>
+  <%= @user.fullname %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
+
+<h3>Friends of <strong> <%= @user.fullname %> </strong> </h3>
+
+<ol>
+  <% @user.docs.each do |doc| %>
+    <li>
+      <%= doc.fullname %>
+      <% if @user == current_user %>
+        <%= link_to 'Unfriend',
+        invitations_destroy_path(invitation_id: Invitation.find_invitation(@user.id, doc.id))  %>
+      <% end %>
+    </li>
+  <% end %>
+</ol>
+
+<h3> These people wants to be friend with <strong> <%= @user.fullname %> </strong> </h3>
+
+<ol>
+  <% @user.pending_invitations.each do |invitation| %>
+    <li>
+      <%= User.find(invitation.user_id).fullname %>
+      <%= link_to 'Accept Invitation',
+      invitations_update_path(invitation_id: invitation.id) %>
+      <%= link_to 'Reject Invitation',
+      invitations_destroy_path(invitation_id: invitation.id) %>
+    </li>
+  <% end %>
+</ol>
+
