@@ -10,6 +10,17 @@
 <% end %>
 </p>
 
+<p><%= link_to 'My Doctors List' %> (<%= @user.doctors.count %>)</p>
+    <% @user.doctors.each do |doctor| %>
+      <p>* <%= doctor.fullname %></p>
+    <% end %>
+
+<p><%= link_to 'My Patients List' %> (<%= @user.patients.count %>)</p>
+    <% @user.patients.each do |patient| %>
+      <p>* <%= patient.fullname %></p>
+    <% end %>
+
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
 
