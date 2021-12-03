@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  post '/book', to: 'relationships#create', as: :book
-  post '/unbook', to: 'relationships#destroy', as: :unbook
   resources :roles
   get 'sessions/new'
   get 'sessions/create'
