@@ -1,5 +1,10 @@
 # Doctor-Patient-Contact
 
+![Admin view](app/assets/images/admin_view.png)
+![Patient view](app/assets/images/patient_view.png)
+![Patient_page](app/assets/images/patient_page.png)
+![Doctor_page](app/assets/images/doctor_page.png)
+
 [Good explanation about similar relationships](https://www.devwalks.com/lets-build-instagram-with-ruby-on-rails-part-6-follow-all-the-people/)
 
  `Role` model -
