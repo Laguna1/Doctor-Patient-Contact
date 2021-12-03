@@ -1,0 +1,26 @@
+<h1>All Doctors (patient view)</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Role</th>
+      <th>Id</th>
+      <th>Fullname</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+       <% if user.doctor? %>
+         <td><strong><%= user.role.name %></strong></td>
+         <td><%= user.id %></td>
+         <td><%= user.fullname %></td>
+       <% end %>
+        <% if signed_in? && current_user != user && user.doctor? %>
+        <td><%= button_to 'Book Doctor', book_doctor_path(user) %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

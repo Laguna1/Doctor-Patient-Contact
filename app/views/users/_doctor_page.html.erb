@@ -1,3 +1,4 @@
+<% if signed_in? && current_user == @user && @user.doctor? %>
 <p><%= button_to 'Show patients?' %></p>
 <p><%= link_to 'My Patients List' %> 
   (<%= @user.patients.count %>)
@@ -5,4 +6,5 @@
 
 <% @user.patients.each do |patient| %>
    <p>* <%= patient.fullname %></p>
+<% end %>
 <% end %>
