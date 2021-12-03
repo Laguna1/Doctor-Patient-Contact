@@ -1,5 +1,8 @@
 # README
 
+
+[Good article about relationships](https://www.devwalks.com/lets-build-instagram-with-ruby-on-rails-part-6-follow-all-the-people/)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 

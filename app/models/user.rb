@@ -24,19 +24,11 @@ class User < ApplicationRecord
     role.name == 'Patient'
   end
 
+  def book_doctor(user_id)
+    doctor_relationships.create(doctor_id: user_id)
+  end
 
-    def docs
-      docs_i_sent_invitation = Invitation.where(user_id: id, confirmed: true).pluck(:doc_id)
-      docs_i_got_invitation = Invitation.where(doc_id: id, confirmed: true).pluck(:user_id)
-      ids = docs_i_sent_invitation + docs_i_got_invitation
-      User.where(id: ids)
-    end
-  
-    def doc_with?(user)
-      Invitation.confirmed_record?(id, user.id)
-    end
-  
-    def send_invitation(user)
-      invitations.create(doc_id: user.id)
-    end
+  def unbook_doctor(user_id)
+    doctor_relationships.find_by(doctor_id: user_id).destroy
+  end
 end
