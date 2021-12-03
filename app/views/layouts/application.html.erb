@@ -14,7 +14,7 @@
     <header>
       <%= "Signed in as *#{current_user.role.name}* #{current_user.fullname}" if signed_in? %>
       <%= link_to "My Page", user_path(current_user.id) if signed_in? %>
-      <%= link_to 'Sign In', sessions_new_path unless signed_in? %>
+      <%= link_to 'Sign In', sessions_new_path %>
       <%= link_to 'Sign Out', sessions_destroy_path if signed_in? %>
       <%= link_to 'All Users', users_path if signed_in? %>
     </header>

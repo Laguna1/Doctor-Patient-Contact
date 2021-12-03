@@ -21,7 +21,7 @@ Sign in with your name...
       <li>
         <strong>
           <%= link_to "Sign in as: #{user.fullname}",
-              sessions_create_path("user" => { "name" => user.fullname }),
+              sessions_create_path("user" => { "fullname" => user.fullname }),
               method: :get
               %>
         </strong>
