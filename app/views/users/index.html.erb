@@ -5,9 +5,10 @@
 <table>
   <thead>
     <tr>
+      <th>Role</th>
       <th>Id</th></th>
       <th>Fullname</th>
-      <th>Role</th>
+      
       <th></th>
       <th></th>
       
@@ -18,9 +19,10 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
+        <td><strong><%= user.role.name %></strong></td>
         <td><%= user.id %></td>
         <td><%= user.fullname %></td>
-        <td><%= user.role.name %></td>
+        
         
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>

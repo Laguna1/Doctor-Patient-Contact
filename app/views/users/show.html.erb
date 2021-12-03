@@ -1,28 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Fullname: </strong><strong><%= @user.role.name %>
-  </strong>
-  <%= @user.fullname %>
+Profile Page: <strong> <%= @user.fullname %></strong>
+  (<strong><%= @user.role.name %></strong>)
 
-<% if signed_in? && current_user != @user && @user.doctor? %>
-  <%= button_to 'Book Doctor' %>
-  <% end %>
-<% if current_user && current_user.doctor? %>
-  <%= button_to 'Show patients' %>
+<% if signed_in? && current_user == @user && @user.admin? %>
+  <%= render 'patient_page', user: @user %>
+  <%= render 'doctor_page', user: @user  %>
+<% elsif @user.patient? %>
+  <%= render 'patient_page', user: @user %>
+<% else %>
+  <%= render 'doctor_page', user: @user  %>
 <% end %>
-</p>
-
-<p><%= link_to 'My Doctors List' %> (<%= @user.doctors.count %>)</p>
-    <% @user.doctors.each do |doctor| %>
-      <p>* <%= doctor.fullname %> <%= button_to 'Unbook Doctor', unbook_doctor_path(doctor) %></p>
-    <% end %>
-
-<p><%= link_to 'My Patients List' %> (<%= @user.patients.count %>)</p>
-    <% @user.patients.each do |patient| %>
-      <p>* <%= patient.fullname %></p>
-    <% end %>
-
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

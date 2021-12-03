@@ -1,0 +1,8 @@
+<p><%= button_to 'Show patients?' %></p>
+<p><%= link_to 'My Patients List' %> 
+  (<%= @user.patients.count %>)
+</p>
+
+<% @user.patients.each do |patient| %>
+   <p>* <%= patient.fullname %></p>
+<% end %>
