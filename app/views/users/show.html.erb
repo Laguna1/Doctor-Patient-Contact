@@ -6,7 +6,10 @@
   <%= @user.fullname %>
 
 <% if signed_in? && current_user != @user && @user.doctor? %>
-  <%= button_to 'Book Doctor' %></td>
+  <%= button_to 'Book Doctor' %>
+  <% end %>
+<% if current_user && current_user.doctor? %>
+  <%= button_to 'Show patients' %>
 <% end %>
 </p>
 

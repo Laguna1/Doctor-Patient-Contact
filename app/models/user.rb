@@ -2,6 +2,9 @@
 
 class User < ApplicationRecord
   belongs_to :role, optional: true
+
+  has_many :contast_with_docs
+  
   has_many :patient_relationships, foreign_key: :doctor_id, class_name: 'ContactWithDoc'
   has_many :patients, through: :patient_relationships, source: :patient
 

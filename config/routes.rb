@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :contact_with_docs
-  post '/users/:id/follow', to: 'users#follow', as: 'follow_user'
-  post '/users/:id/unfollow', to: 'users#unfollow', as: 'unfollow_user'
+  post '/users/:id/book', to: 'users#book', as: 'book_doctor'
+  post '/users/:id/unbook', to: 'users#unbook', as: 'unbook_doctor'
   resources :roles
   get 'sessions/new'
   get 'sessions/create'

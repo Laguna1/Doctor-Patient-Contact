@@ -26,7 +26,7 @@
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td> </td>
         <% if signed_in? && current_user != user && user.doctor? %>
-          <td><%= button_to 'Book Doctor' %></td>
+          <td><%= button_to 'Book Doctor', book_doctor_path(user) %></td>
         <% end %>
         
       </tr>
