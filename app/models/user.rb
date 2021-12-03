@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   belongs_to :role, optional: true
   has_many :patient_relationships, foreign_key: :doctor_id, class_name: 'ContactWithDoc'
