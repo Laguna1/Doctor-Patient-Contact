@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :contact_with_docs
   resources :roles
   get 'sessions/new'
   get 'sessions/create'

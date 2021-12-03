@@ -1,0 +1,2 @@
+class ContactWithDocsController < ApplicationController
+end
