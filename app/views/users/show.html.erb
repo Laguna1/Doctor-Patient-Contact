@@ -4,6 +4,10 @@
   <strong>Fullname: </strong><strong><%= @user.role.name %>
   </strong>
   <%= @user.fullname %>
+
+<% if signed_in? && current_user != @user && @user.doctor? %>
+  <%= button_to 'Book Doctor' %></td>
+<% end %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
