@@ -10,18 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_20_204134) do
+ActiveRecord::Schema.define(version: 2021_12_02_224807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "invitations", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.integer "doc_id"
-    t.boolean "confirmed", default: false
+  create_table "contact_with_docs", force: :cascade do |t|
+    t.integer "patient_id", null: false
+    t.integer "doctor_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_invitations_on_user_id"
+    t.index ["doctor_id"], name: "index_contact_with_docs_on_doctor_id"
+    t.index ["patient_id", "doctor_id"], name: "index_contact_with_docs_on_patient_id_and_doctor_id", unique: true
+    t.index ["patient_id"], name: "index_contact_with_docs_on_patient_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -39,6 +40,5 @@ ActiveRecord::Schema.define(version: 2021_11_20_204134) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
-  add_foreign_key "invitations", "users"
   add_foreign_key "users", "roles"
 end

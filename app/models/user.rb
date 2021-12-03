@@ -1,9 +1,12 @@
 class User < ApplicationRecord
-    belongs_to :role, optional: true
-    has_many :invitations
-    has_many :pending_invitations, -> { where confirmed: false }, class_name: 'Invitation', foreign_key: 'doc_id'
-    
-    before_save :assign_role
+  belongs_to :role, optional: true
+  has_many :patient_relationships, foreign_key: :doctor_id, class_name: 'ContactWithDoc'
+  has_many :patients, through: :patient_relationships, source: :patient
+
+  has_many :doctor_relationships, foreign_key: :patient_id, class_name: 'ContactWithDoc'
+  has_many :doctors, through: :doctor_relationships, source: :doctor
+
+  before_save :assign_role
 
   def assign_role
     self.role = Role.find_by name: 'Patient' if role.nil?
